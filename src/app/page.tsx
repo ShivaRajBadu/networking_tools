@@ -1,103 +1,76 @@
-import Image from "next/image";
+import React from 'react';
+import Calculator from './components/Calculator';
+import Link from 'next/link';
 
-export default function Home() {
+const Page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="container mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold text-center my-8">IP Subnet Calculator</h1>
+      <p className="text-center mb-8 max-w-3xl mx-auto text-gray-700">
+        This calculator returns a variety of information regarding Internet Protocol version 4 (IPv4) and IPv6 subnets including possible network addresses, usable host ranges, subnet mask, and IP class, among others.
+      </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <Calculator />
+
+      <div className="mt-12 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4">About IP Subnetting</h2>
+        <p className="mb-4">
+          A subnet is a division of an IP network (internet protocol suite), where an IP network is a set of communications protocols used on the Internet and other similar networks. It is commonly known as TCP/IP (Transmission Control Protocol/Internet Protocol).
+        </p>
+        <p className="mb-4">
+          The act of dividing a network into at least two separate networks is called subnetting, and routers are devices that allow traffic exchange between subnetworks, serving as a physical boundary. IPv4 is the most common network addressing architecture used, though the use of IPv6 has been growing since 2006.
+        </p>
+        <p className="mb-4">
+          An IP address is comprised of a network number (routing prefix) and a rest field (host identifier). A rest field is an identifier that is specific to a given host or network interface. A routing prefix is often expressed using Classless Inter-Domain Routing (CIDR) notation for both IPv4 and IPv6.
+        </p>
+
+        <h3 className="text-xl font-semibold mt-6 mb-3">Common Subnet Masks</h3>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="p-2 border">Prefix size</th>
+                <th className="p-2 border">Network mask</th>
+                <th className="p-2 border">Usable hosts per subnet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td className="p-2 border">/8</td><td className="p-2 border">255.0.0.0</td><td className="p-2 border">16,777,214</td></tr>
+              <tr className="bg-gray-100"><td className="p-2 border">/16</td><td className="p-2 border">255.255.0.0</td><td className="p-2 border">65,534</td></tr>
+              <tr><td className="p-2 border">/24</td><td className="p-2 border">255.255.255.0</td><td className="p-2 border">254</td></tr>
+              <tr className="bg-gray-100"><td className="p-2 border">/26</td><td className="p-2 border">255.255.255.192</td><td className="p-2 border">62</td></tr>
+              <tr><td className="p-2 border">/28</td><td className="p-2 border">255.255.255.240</td><td className="p-2 border">14</td></tr>
+              <tr className="bg-gray-100"><td className="p-2 border">/30</td><td className="p-2 border">255.255.255.252</td><td className="p-2 border">2</td></tr>
+            </tbody>
+          </table>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+        <h3 className="text-xl font-semibold mt-6 mb-3">IP Classes</h3>
+        <p className="mb-4">
+          Prior to the introduction of CIDR, IPv4 network prefixes could be directly obtained from the IP address based on the class (A, B, or C, which vary based on the range of IP addresses they include) of the address and the network mask.
+        </p>
+        <ul className="list-disc pl-6 mb-4">
+          <li><strong>Class A</strong>: First bit is 0, addresses range from 1.0.0.0 to 126.255.255.255</li>
+          <li><strong>Class B</strong>: First two bits are 10, addresses range from 128.0.0.0 to 191.255.255.255</li>
+          <li><strong>Class C</strong>: First three bits are 110, addresses range from 192.0.0.0 to 223.255.255.255</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold mt-6 mb-3">Related Tools</h3>
+        <div className="flex flex-wrap gap-4">
+          <Link href="/" className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
+            Bandwidth Calculator
+          </Link>
+          <Link href="/" className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
+            Binary Calculator
+          </Link>
+        </div>
+      </div>
+
+      <footer className="mt-12 text-center text-gray-600 text-sm">
+        <p>© 2023 IP Subnet Calculator. All rights reserved.</p>
       </footer>
     </div>
   );
-}
+};
+
+export default Page;
