@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Page = () => {
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container mx-auto py-8 px-4 ">
       <h1 className="text-3xl font-bold text-center my-8">IP Subnet Calculator</h1>
       <p className="text-center mb-8 max-w-3xl mx-auto text-gray-700">
         This calculator returns a variety of information regarding Internet Protocol version 4 (IPv4) and IPv6 subnets including possible network addresses, usable host ranges, subnet mask, and IP class, among others.
