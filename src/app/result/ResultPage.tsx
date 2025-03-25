@@ -44,8 +44,8 @@ const ResultPage = () => {
                     <CardTitle className="text-2xl font-bold text-rose-600 mb-4">No Results Found</CardTitle>
                     <CardContent>
                         <p className="mb-6">Unable to calculate subnet information. Please try again with valid inputs.</p>
-                        <Button asChild className="bg-sky-600 hover:bg-sky-700">
-                            <Link href="/">Back to Calculator</Link>
+                        <Button asChild className="bg-sky-600 text-white hover:bg-sky-700">
+                            <Link href="/" className='text-white'>Back to Calculator</Link>
                         </Button>
                     </CardContent>
                 </Card>
@@ -56,9 +56,6 @@ const ResultPage = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-8 px-4">
             <div className="container mx-auto">
-                <h1 className="text-4xl font-bold text-center mb-2 text-sky-700">IP Subnet Calculator</h1>
-                <p className="text-center mb-8 text-sky-600">Detailed subnet information and network analysis</p>
-
                 <Card className="max-w-5xl mx-auto overflow-hidden shadow-xl border-sky-200">
                     <div className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
                         <h2 className="text-2xl font-bold">Subnet Calculation Results</h2>
@@ -151,6 +148,64 @@ const ResultPage = () => {
                                 </div>
                             </div>
 
+                            {/* New section: Network Configuration Examples */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">Network Configuration Examples</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Linux Configuration</h4>
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                            <div>sudo ip addr add {result.data[0].ipAddress}{result.data[0].cidrNotation} dev eth0</div>
+                                            <div>sudo ip route add default via {result.data[0].networkAddress.split('.').slice(0, 3).join('.')}.1 dev eth0</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Windows Configuration</h4>
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                            <div>netsh interface ip set address "Ethernet" static {result.data[0].ipAddress} {result.data[0].subnetMask} {result.data[0].networkAddress.split('.').slice(0, 3).join('.')}.1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-4">
+                                    <h4 className="font-medium text-sky-700 mb-2">Cisco Router Configuration</h4>
+                                    <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                        <div>interface GigabitEthernet0/0</div>
+                                        <div> ip address {result.data[0].ipAddress} {result.data[0].subnetMask}</div>
+                                        <div> no shutdown</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* New section: DHCP Server Configuration */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">DHCP Server Configuration</h3>
+                                <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                    <div># ISC DHCP Server Configuration</div>
+                                    <div>subnet {result.data[0].networkAddress} netmask {result.data[0].subnetMask} {'{'}</div>
+                                    <div>  range {result.data[0].hostRange.split(' - ')[0]} {result.data[0].hostRange.split(' - ')[1]};</div>
+                                    <div>  option routers {result.data[0].networkAddress.split('.').slice(0, 3).join('.')}.1;</div>
+                                    <div>  option domain-name-servers 8.8.8.8, 8.8.4.4;</div>
+                                    <div>  option domain-name "example.com";</div>
+                                    <div>  default-lease-time 86400; # 24 hours</div>
+                                    <div>  max-lease-time 172800; # 48 hours</div>
+                                    <div>{'}'}</div>
+                                </div>
+                            </div>
+
+                            {/* New section: Firewall Rules */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">Sample Firewall Rules</h3>
+                                <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                    <div># iptables rules to protect this network</div>
+                                    <div>iptables -A INPUT -s {result.data[0].networkAddress}{result.data[0].cidrNotation} -j ACCEPT</div>
+                                    <div>iptables -A INPUT -p tcp --dport 22 -j DROP</div>
+                                    <div>iptables -A INPUT -p tcp --dport 80 -j ACCEPT</div>
+                                    <div>iptables -A INPUT -p tcp --dport 443 -j ACCEPT</div>
+                                    <div>iptables -A INPUT -j LOG</div>
+                                    <div>iptables -A INPUT -j DROP</div>
+                                </div>
+                            </div>
+
                             <div className="mt-10">
                                 <h3 className="text-xl font-bold mb-4 text-sky-700">
                                     All {result.data[0].allNetworks.length} of the Possible {result.data[0].cidrNotation} Networks for {result.data[0].ipAddress.split('.').slice(0, 3).join('.')}.*
@@ -214,11 +269,105 @@ const ResultPage = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* New IPv6 sections */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">IPv6 Address Formats</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Expanded Format</h4>
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                            {result.data.ipAddress.replace(/::/g, ':0000:0000:0000:0000:0000:0000:').replace(/^:|:$/g, '').split(':').map((hex: string) => hex.padStart(4, '0')).join(':')}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Compressed Format</h4>
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                            {result.data.ipAddress}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* IPv6 Network Configuration Examples */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">Network Configuration Examples</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Linux Configuration</h4>
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                            <div>sudo ip -6 addr add {result.data.ipAddress}{result.data.prefixLength} dev eth0</div>
+                                            <div>sudo ip -6 route add default via fe80::1 dev eth0</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Windows Configuration</h4>
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                            <div>netsh interface ipv6 add address "Ethernet" {result.data.ipAddress}{result.data.prefixLength}</div>
+                                            <div>netsh interface ipv6 add route ::/0 "Ethernet" fe80::1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-4">
+                                    <h4 className="font-medium text-sky-700 mb-2">Cisco Router Configuration</h4>
+                                    <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                        <div>interface GigabitEthernet0/0</div>
+                                        <div> ipv6 address {result.data.ipAddress}{result.data.prefixLength}</div>
+                                        <div> ipv6 enable</div>
+                                        <div> no shutdown</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* IPv6 Subnet Planning */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">IPv6 Subnet Planning</h3>
+                                <p className="mb-3 text-sm">Recommended subnet allocation for this prefix:</p>
+
+                                <div className="space-y-4">
+                                    {parseInt(result.data.prefixLength.replace('/', '')) <= 48 && (
+                                        <div>
+                                            <h4 className="font-medium text-sky-700 mb-2">Site Allocation Strategy</h4>
+                                            <div className="bg-gray-100 p-3 rounded text-sm">
+                                                <p>With a {result.data.prefixLength} prefix, you can create:</p>
+                                                <ul className="list-disc pl-6 mt-2">
+                                                    <li>{Math.pow(2, 64 - parseInt(result.data.prefixLength.replace('/', '')))} /64 networks (standard subnets)</li>
+                                                    <li>{Math.pow(2, 56 - parseInt(result.data.prefixLength.replace('/', '')))} /56 networks (typical home/small business allocations)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div>
+                                        <h4 className="font-medium text-sky-700 mb-2">Recommended Address Assignments</h4>
+                                        <div className="space-y-1 font-mono text-sm">
+                                            <div><span className="text-sky-600">Infrastructure:</span> {result.data.networkAddress.split('::')[0]}::1:0/112</div>
+                                            <div><span className="text-sky-600">User Networks:</span> {result.data.networkAddress.split('::')[0]}::2:0/112 to {result.data.networkAddress.split('::')[0]}::fffe:0/112</div>
+                                            <div><span className="text-sky-600">Point-to-Point Links:</span> {result.data.networkAddress.split('::')[0]}::ffff:0/112</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* IPv6 Security Considerations */}
+                            <div className="form-card mb-8">
+                                <h3 className="text-lg font-semibold text-sky-800 mb-3">IPv6 Security Considerations</h3>
+                                <div className="space-y-3">
+                                    <p>When implementing IPv6, consider these security best practices:</p>
+                                    <ul className="list-disc pl-6 space-y-1">
+                                        <li>Filter ICMPv6 messages but don't block them completely (needed for NDP)</li>
+                                        <li>Implement RA Guard to prevent rogue Router Advertisements</li>
+                                        <li>Use DHCPv6 snooping to prevent rogue DHCPv6 servers</li>
+                                        <li>Consider using Unique Local Addresses (ULA) for internal networks</li>
+                                        <li>Implement IPv6 firewall rules similar to your IPv4 policies</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     )}
 
                     <div className="p-6 bg-sky-50 flex justify-between items-center border-t border-sky-200">
-                        <Button asChild className="bg-sky-600 hover:bg-sky-700 text-white shadow-md">
+                        <Button asChild className="bg-sky-600 hover:bg-sky-700">
                             <Link href="/">Back to Calculator</Link>
                         </Button>
                         <Button variant="outline" onClick={() => window.print()} className="flex items-center border-sky-300 text-sky-700 hover:bg-sky-50">
@@ -230,32 +379,9 @@ const ResultPage = () => {
                     </div>
                 </Card>
 
-                <div className="mt-10 max-w-5xl mx-auto form-card p-6">
-                    <h3 className="text-xl font-semibold mb-4 text-sky-700">Understanding Your Results</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 className="font-semibold text-sky-700 mb-2">Network Address</h4>
-                            <p className="text-gray-700 mb-4">The base address of your network. This is the first address in your subnet and cannot be assigned to a device.</p>
 
-                            <h4 className="font-semibold text-sky-700 mb-2">Broadcast Address</h4>
-                            <p className="text-gray-700 mb-4">The last address in your subnet, used to send data to all devices on the network. Cannot be assigned to a device.</p>
 
-                            <h4 className="font-semibold text-sky-700 mb-2">Usable Host Range</h4>
-                            <p className="text-gray-700">The range of IP addresses that can be assigned to devices on your network, excluding the network and broadcast addresses.</p>
-                        </div>
 
-                        <div>
-                            <h4 className="font-semibold text-sky-700 mb-2">Subnet Mask</h4>
-                            <p className="text-gray-700 mb-4">Determines which portion of an IP address refers to the network and which refers to hosts.</p>
-
-                            <h4 className="font-semibold text-sky-700 mb-2">CIDR Notation</h4>
-                            <p className="text-gray-700 mb-4">A compact representation of an IP address and its associated routing prefix, shown as a suffix indicating the number of bits in the prefix.</p>
-
-                            <h4 className="font-semibold text-sky-700 mb-2">IP Class</h4>
-                            <p className="text-gray-700">The traditional classification of IP addresses (A, B, C, D, or E) based on the value of the first octet.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     );

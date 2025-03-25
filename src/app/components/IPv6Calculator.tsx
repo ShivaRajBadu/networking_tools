@@ -36,9 +36,9 @@ const IPv6Calculator = () => {
     };
 
     return (
-        <Card className="max-w-xl mx-auto shadow-lg border-sky-200">
+        <Card className="max-w-xl mx-auto shadow-lg py-0 border-sky-200">
             <CardHeader className="bg-gradient-to-r from-sky-600 to-sky-500 text-white rounded-t-lg">
-                <CardTitle className="text-3xl font-bold text-center">IPv6 Subnet Calculator</CardTitle>
+                <CardTitle className="text-3xl font-bold text-center py-4">IPv6 Subnet Calculator</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
                 {error && (

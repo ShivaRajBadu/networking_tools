@@ -125,9 +125,9 @@ const IPv4Calculator = () => {
     };
 
     return (
-        <Card className="max-w-xl mx-auto shadow-lg border-sky-200">
+        <Card className="max-w-xl mx-auto shadow-lg py-0 border-sky-200">
             <CardHeader className="bg-gradient-to-r from-sky-600 to-sky-500 text-white rounded-t-lg">
-                <CardTitle className="text-3xl font-bold text-center">IPv4 Subnet Calculator</CardTitle>
+                <CardTitle className="text-3xl font-bold text-center py-4">IPv4 Subnet Calculator</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
                 {error && (
@@ -207,8 +207,8 @@ const IPv4Calculator = () => {
                 </div>
 
                 <div className="mt-8 flex justify-center space-x-4">
-                    <Button onClick={handleCalculate} className="bg-sky-600 hover:bg-sky-700 text-white shadow-md">
-                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <Button onClick={handleCalculate} className="bg-sky-600 font-semibold hover:bg-sky-700 text-white shadow-md">
+                        <svg className="w-5 h-5 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                         Calculate
@@ -220,7 +220,7 @@ const IPv4Calculator = () => {
                         setResult(null);
                         setError('');
                     }} className="border-sky-300 text-sky-700 hover:bg-sky-50">
-                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-5 h-5 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                         Clear
