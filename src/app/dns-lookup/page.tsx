@@ -17,6 +17,7 @@ export default function DNSLookupPage() {
                     <p className="text-gray-700">
                         The DNS Lookup tool helps you query DNS records for any domain. Check A records,
                         AAAA records, CNAME records, MX records, and more to understand how a domain is configured.
+                        Use the filter options to focus on specific record types.
                     </p>
                 </div>
 
@@ -60,6 +61,18 @@ export default function DNSLookupPage() {
                                 <p className="font-medium text-sky-700">NS Record</p>
                                 <p className="text-sm">Lists the nameservers for the domain</p>
                                 <p className="text-sm mt-1 font-mono">example.com → ns1.example.com</p>
+                            </div>
+
+                            <div className="border rounded p-3 bg-sky-50/50">
+                                <p className="font-medium text-sky-700">SOA Record</p>
+                                <p className="text-sm">Start of Authority - contains admin info about the zone</p>
+                                <p className="text-sm mt-1 font-mono">example.com → ns1.example.com admin.example.com 2023010101 ...</p>
+                            </div>
+
+                            <div className="border rounded p-3 bg-sky-50/50">
+                                <p className="font-medium text-sky-700">CAA Record</p>
+                                <p className="text-sm">Certificate Authority Authorization - specifies which CAs can issue certificates</p>
+                                <p className="text-sm mt-1 font-mono">example.com → 0 issue "letsencrypt.org"</p>
                             </div>
                         </div>
 

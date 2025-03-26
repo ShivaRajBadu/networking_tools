@@ -15,8 +15,12 @@ export default function TraceroutePage() {
 
                 <div className="bg-white p-6 rounded-lg shadow-md mb-8 prose max-w-none">
                     <p className="text-gray-700">
-                        The Traceroute Visualizer shows you the journey your data takes across the internet.
-                        Visualize each network hop between your computer and a destination server on an interactive map.
+                        The Traceroute Visualizer shows you the actual journey your data takes across the internet.
+                        Visualize each network hop between our server and a destination server on an interactive map.
+                    </p>
+                    <p className="text-gray-700">
+                        Unlike browser-based simulations, this tool performs real traceroute operations on our server
+                        and displays the actual network path with geolocation data for each hop.
                     </p>
                 </div>
 
@@ -80,6 +84,15 @@ export default function TraceroutePage() {
                                 </tbody>
                             </table>
                         </div>
+                        <div className="mt-4 p-3 bg-white rounded border border-indigo-100">
+                            <p className="font-medium text-indigo-700 mb-1">What Makes a Good Traceroute?</p>
+                            <ul className="list-disc pl-5 space-y-1">
+                                <li><span className="font-medium">Hop Count:</span> Fewer hops generally mean a more efficient path, but 10-20 hops is typical for most internet destinations.</li>
+                                <li><span className="font-medium">Response Times:</span> Ideally, RTT should increase gradually as hops get further from the source. Sudden large jumps may indicate network congestion or inefficient routing.</li>
+                                <li><span className="font-medium">Geographic Logic:</span> The physical path should make geographic sense, though sometimes traffic is routed through unexpected locations for business or technical reasons.</li>
+                                <li><span className="font-medium">Few Missing Hops:</span> While some non-responding hops are normal, many consecutive missing hops could indicate network issues.</li>
+                            </ul>
+                        </div>
 
                         <h3 className="text-xl font-semibold mt-6 mb-3 text-indigo-700">Use Cases for Traceroute</h3>
 
@@ -104,6 +117,7 @@ export default function TraceroutePage() {
                                 <p className="text-sm">Verify that traffic flows through expected providers</p>
                             </div>
                         </div>
+
 
                         <div className="bg-indigo-50 p-4 rounded-lg mt-6 border border-indigo-200">
                             <p className="font-medium text-indigo-700">Traceroute Commands on Different Systems</p>

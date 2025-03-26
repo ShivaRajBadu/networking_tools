@@ -13,8 +13,8 @@ const Header = () => {
     return (
         <header className="bg-blue-600 text-white shadow-md">
             <div className="container mx-auto px-4 py-3">
-                <div className="flex flex-col md:flex-row justify-between items-center">
-                    <Link href="/" className="text-xl font-bold mb-3 md:mb-0">
+                <div className="flex flex-col lg:flex-row justify-between items-center">
+                    <Link href="/" className="text-xl font-bold mb-3 lg:mb-0">
                         Network Tools
                     </Link>
 

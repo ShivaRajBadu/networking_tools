@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function MACLookupPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-8 px-4">
-            <div className="container mx-auto max-w-5xl">
-                <h1 className="text-3xl font-bold mb-4 text-sky-800">MAC Address Lookup</h1>
+        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-6 sm:py-8">
+            <div className="container mx-auto max-w-5xl px-4 sm:px-6">
+                <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-sky-800">MAC Address Lookup</h1>
 
-                <div className="bg-white p-6 rounded-lg shadow-md mb-8 prose max-w-none">
-                    <p className="text-gray-700">
+                <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md mb-6 sm:mb-8 prose max-w-none">
+                    <p className="text-gray-700 text-sm sm:text-base">
                         The MAC Address Lookup tool helps you identify the manufacturer of network devices
                         using their MAC address. Enter a MAC address to find its vendor and other details.
                     </p>
@@ -22,16 +22,16 @@ export default function MACLookupPage() {
 
                 <MACAddressLookupTool />
 
-                <div className="mt-12 bg-white p-6 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-bold mb-4 text-sky-800">Understanding MAC Addresses</h2>
+                <div className="mt-8 sm:mt-12 bg-white p-4 sm:p-6 rounded-lg shadow-md">
+                    <h2 className="text-xl sm:text-2xl font-bold mb-4 text-sky-800">Understanding MAC Addresses</h2>
                     <div className="prose max-w-none text-gray-700">
-                        <p>
+                        <p className="text-sm sm:text-base">
                             A MAC (Media Access Control) address is a unique identifier assigned to network interfaces.
                             It consists of 6 bytes (48 bits), usually written as six pairs of hexadecimal digits.
                         </p>
 
-                        <h3 className="text-xl font-semibold mt-6 mb-3 text-sky-700">MAC Address Format</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <h3 className="text-lg sm:text-xl font-semibold mt-6 mb-3 text-sky-700">MAC Address Format</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div className="border rounded p-3 bg-sky-50/50">
                                 <p className="font-medium text-sky-700">OUI (First 3 bytes)</p>
                                 <p className="text-sm">Organizationally Unique Identifier - identifies the manufacturer</p>
