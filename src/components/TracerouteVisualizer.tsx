@@ -89,7 +89,7 @@ export default function TracerouteVisualizer() {
                 // Call our backend API
                 setLoadingStage('Resolving hostname...');
 
-                const response = await fetch('/api/traceroute', {
+                const response = await fetch('http://localhost:3001/api/traceroute', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

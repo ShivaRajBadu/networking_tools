@@ -35,7 +35,12 @@ export default function MACAddressLookupTool() {
             // Format MAC address with colons for display
             const formattedMac = cleanMac.match(/.{2}/g)?.join(':') || '';
 
-            const response = await fetch(`/api/mac-lookup?mac=${formattedMac}`);
+            const response = await fetch(`http://localhost:3001/api/mac-lookup?mac=${formattedMac}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+            });
 
             if (!response.ok) {
                 const data = await response.json();
