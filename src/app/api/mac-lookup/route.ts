@@ -1,26 +1,28 @@
 import { NextResponse } from 'next/server';
 
-const API_URL = process.env.API_URL || 'http://localhost:3001';
-
 export async function GET(request: Request) {
-    try {
-        const { searchParams } = new URL(request.url);
-        const mac = searchParams.get('mac');
+    const { searchParams } = new URL(request.url);
+    const macAddress = searchParams.get('mac');
 
-        if (!mac) {
-            return NextResponse.json({ error: 'MAC address is required' }, { status: 400 });
+    if (!macAddress) {
+        return NextResponse.json({ error: 'MAC address is required' }, { status: 400 });
+    }
+
+    try {
+        const response = await fetch(`https://www.macvendorlookup.com/api/v2/${macAddress}`);
+        
+        if (!response.ok) {
+            return NextResponse.json({ error: 'Failed to fetch vendor information' }, { status: response.status });
         }
 
-        const response = await fetch(`${API_URL}/api/mac-lookup?mac=${mac}`);
         const data = await response.json();
-
-        if (!response.ok) {
-            return NextResponse.json({ error: data.error }, { status: response.status });
+        
+        if (!Array.isArray(data) || data.length === 0) {
+            return NextResponse.json({ error: 'No vendor information found' }, { status: 404 });
         }
 
         return NextResponse.json(data);
     } catch (error) {
-        console.error('MAC lookup error:', error);
-        return NextResponse.json({ error: 'Failed to lookup MAC address' }, { status: 500 });
+        return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 });
     }
 } 

@@ -13,7 +13,7 @@ export default function BinaryCalculatorPage() {
             <div className="container mx-auto max-w-5xl">
                 <h1 className="text-3xl font-bold mb-4 text-sky-800">Binary Calculator</h1>
 
-                <div className="bg-white p-6 rounded-lg shadow-md mb-8 prose max-w-none">
+                <div className="bg-white p-6 rounded-lg shadow-md mb-8 ">
                     <p className="text-gray-700">
                         The Binary Calculator helps network administrators and students convert between different number systems
                         commonly used in computing and networking. Convert between decimal, binary, hexadecimal, and octal with ease.
@@ -22,9 +22,9 @@ export default function BinaryCalculatorPage() {
 
                 <BinaryCalculatorTool />
 
-                <div className="mt-12 bg-white p-6 rounded-lg shadow-md">
+                <div className="mt-12 bg-white p-2 sm:p-6 rounded-lg shadow-md">
                     <h2 className="text-2xl font-bold mb-4 text-sky-800">Understanding Number Systems</h2>
-                    <div className="prose max-w-none text-gray-700">
+                    <div className="  text-gray-700">
                         <p>
                             Different number systems are used in computing and networking for various purposes. Understanding how to convert
                             between these systems is essential for network configuration, troubleshooting, and programming.
@@ -124,9 +124,9 @@ export default function BinaryCalculatorPage() {
 
                         <div className="bg-sky-50 p-4 rounded-lg mt-4 border border-sky-200">
                             <p className="font-medium text-sky-700">Example: Subnet Mask Application</p>
-                            <p className="font-mono">IP Address:  192.168.1.10  (11000000.10101000.00000001.00001010)</p>
-                            <p className="font-mono">Subnet Mask: 255.255.255.0 (11111111.11111111.11111111.00000000)</p>
-                            <p className="font-mono">AND Result:  192.168.1.0   (11000000.10101000.00000001.00000000)</p>
+                            <p className="font-mono text-xs sm:text-sm overflow-x-auto">IP Address:  192.168.1.10  (11000000.10101000.00000001.00001010)</p>
+                            <p className="font-mono text-xs sm:text-sm overflow-x-auto">Subnet Mask: 255.255.255.0 (11111111.11111111.11111111.00000000)</p>
+                            <p className="font-mono text-xs sm:text-sm overflow-x-auto">AND Result:  192.168.1.0   (11000000.10101000.00000001.00000000)</p>
                             <p className="mt-2">The AND operation reveals the network address of the IP.</p>
                         </div>
                     </div>

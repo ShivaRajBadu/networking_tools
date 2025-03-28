@@ -59,7 +59,7 @@ export async function generateMetadata({
 
 const Page = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-8 px-4">
+        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-8 px-2 sm:px-4">
             <div className="container mx-auto">
                 <h1 className="text-4xl font-bold text-center mb-2 text-sky-700">IP Subnet Calculator Results</h1>
                 <p className="text-center mb-8 text-sky-600">

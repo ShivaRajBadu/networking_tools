@@ -79,29 +79,29 @@ export default function BandwidthCalculatorTool() {
 
     return (
         <div>
-            <Card className="overflow-hidden shadow-md border-sky-200 mb-6">
-                <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
-                    <CardTitle className="text-xl font-bold">Bandwidth Calculator Tool</CardTitle>
-                    <p className="text-sky-100">Calculate file transfer time based on file size and bandwidth</p>
+            <Card className="overflow-hidden shadow-md py-0 border-sky-200 mb-6">
+                <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-4 sm:p-6">
+                    <CardTitle className="text-lg sm:text-xl font-bold">Bandwidth Calculator Tool</CardTitle>
+                    <p className="text-sky-100 text-sm sm:text-base">Calculate file transfer time based on file size and bandwidth</p>
                 </CardHeader>
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                     <div className="mb-4">
                         <label htmlFor="fileSize" className="block text-sm font-medium text-gray-700 mb-1">
                             File Size:
                         </label>
-                        <div className="flex">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                             <input
                                 type="number"
                                 id="fileSize"
                                 value={fileSize}
                                 onChange={(e) => setFileSize(e.target.value)}
                                 placeholder="Enter file size"
-                                className="flex-1 p-2 border rounded-l focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full sm:flex-1 p-2 text-sm sm:text-base border rounded sm:rounded-r-none focus:ring-blue-500 focus:border-blue-500"
                             />
                             <select
                                 value={fileSizeUnit}
                                 onChange={(e) => setFileSizeUnit(e.target.value)}
-                                className="p-2 border-y border-r rounded-r bg-gray-50"
+                                className="w-full sm:w-auto p-2 text-sm sm:text-base border rounded sm:rounded-l-none bg-gray-50"
                             >
                                 <option value="B">Bytes (B)</option>
                                 <option value="KB">Kilobytes (KB)</option>
@@ -116,19 +116,19 @@ export default function BandwidthCalculatorTool() {
                         <label htmlFor="bandwidth" className="block text-sm font-medium text-gray-700 mb-1">
                             Bandwidth:
                         </label>
-                        <div className="flex">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                             <input
                                 type="number"
                                 id="bandwidth"
                                 value={bandwidth}
                                 onChange={(e) => setBandwidth(e.target.value)}
                                 placeholder="Enter bandwidth"
-                                className="flex-1 p-2 border rounded-l focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full sm:flex-1 p-2 text-sm sm:text-base border rounded sm:rounded-r-none focus:ring-blue-500 focus:border-blue-500"
                             />
                             <select
                                 value={bandwidthUnit}
                                 onChange={(e) => setBandwidthUnit(e.target.value)}
-                                className="p-2 border-y border-r rounded-r bg-gray-50"
+                                className="w-full sm:w-auto p-2 text-sm sm:text-base border rounded sm:rounded-l-none bg-gray-50"
                             >
                                 <option value="bps">bits per second (bps)</option>
                                 <option value="Kbps">Kilobits per second (Kbps)</option>
@@ -141,7 +141,7 @@ export default function BandwidthCalculatorTool() {
 
                     <button
                         onClick={calculateTransferTime}
-                        className="w-full bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 transition"
+                        className="w-full bg-sky-600 text-white px-4 py-2 text-sm sm:text-base rounded hover:bg-sky-700 transition"
                     >
                         Calculate Transfer Time
                     </button>
@@ -152,18 +152,22 @@ export default function BandwidthCalculatorTool() {
 
             {result && (
                 <Card className="overflow-hidden shadow-xl border-sky-200">
-                    <div className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
-                        <h2 className="text-2xl font-bold">Transfer Time Result</h2>
-                        <p className="opacity-90">File: {fileSize} {fileSizeUnit} at {bandwidth} {bandwidthUnit}</p>
+                    <div className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-4 sm:p-6">
+                        <h2 className="text-xl sm:text-2xl font-bold">Transfer Time Result</h2>
+                        <p className="opacity-90 text-sm sm:text-base">
+                            File: {fileSize} {fileSizeUnit} at {bandwidth} {bandwidthUnit}
+                        </p>
                     </div>
 
-                    <CardContent className="p-6">
-                        <div className="border rounded p-4 bg-blue-50">
-                            <h3 className="text-lg font-semibold text-sky-800 mb-2">Estimated Transfer Time:</h3>
-                            <p className="text-xl font-semibold text-sky-700">{result}</p>
+                    <CardContent className="p-4 sm:p-6">
+                        <div className="border rounded p-3 sm:p-4 bg-blue-50">
+                            <h3 className="text-base sm:text-lg font-semibold text-sky-800 mb-2">
+                                Estimated Transfer Time:
+                            </h3>
+                            <p className="text-lg sm:text-xl font-semibold text-sky-700">{result}</p>
                         </div>
 
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="mt-6 grid grid-cols-1 gap-4 sm:gap-6">
                             <div className="form-card">
                                 <h3 className="text-lg font-semibold text-sky-800 mb-3">File Size Details</h3>
                                 <div className="space-y-2">

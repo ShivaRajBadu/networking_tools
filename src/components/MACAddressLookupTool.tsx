@@ -4,12 +4,29 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, AlertCircle } from 'lucide-react';
 
+interface MACVendorResponse {
+    startHex: string;
+    endHex: string;
+    startDec: string;
+    endDec: string;
+    company: string;
+    addressL1: string;
+    addressL2: string;
+    addressL3: string;
+    country: string;
+    type: string;
+}
+
 interface MACLookupResult {
     vendorName: string;
     macAddress: string;
-    isPrivate: boolean;
+    address: string;
+    country: string;
     type: string;
-    cast: string;
+    range: {
+        start: string;
+        end: string;
+    };
 }
 
 export default function MACAddressLookupTool() {
@@ -24,31 +41,44 @@ export default function MACAddressLookupTool() {
             setResult(null);
             setIsLoading(true);
 
-            // Clean up MAC address format
             const cleanMac = macAddress.replace(/[^0-9A-Fa-f]/g, '').toUpperCase();
 
-            // Validate MAC address format
             if (cleanMac.length !== 12) {
                 throw new Error('Invalid MAC address format. Please enter a valid MAC address.');
             }
 
-            // Format MAC address with colons for display
             const formattedMac = cleanMac.match(/.{2}/g)?.join(':') || '';
 
-            const response = await fetch(`http://localhost:3001/api/mac-lookup?mac=${formattedMac}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                },
-            });
+            const response = await fetch(`/api/mac-lookup?mac=${formattedMac}`);
 
             if (!response.ok) {
                 const data = await response.json();
+                if (response.status === 429) {
+                    throw new Error('Too many requests. Please try again later.');
+                }
                 throw new Error(data.error || 'Failed to fetch vendor information');
             }
 
-            const data = await response.json();
-            setResult(data);
+            const data: MACVendorResponse[] = await response.json();
+
+            if (!data || data.length === 0) {
+                throw new Error('No vendor information found for this MAC address');
+            }
+
+            const vendorInfo = data[0];
+            setResult({
+                vendorName: vendorInfo.company || 'Unknown',
+                macAddress: formattedMac,
+                address: [vendorInfo.addressL1, vendorInfo.addressL2, vendorInfo.addressL3]
+                    .filter(Boolean)
+                    .join(', '),
+                country: vendorInfo.country || 'Unknown',
+                type: vendorInfo.type.toUpperCase() || 'Unknown',
+                range: {
+                    start: vendorInfo.startHex,
+                    end: vendorInfo.endHex
+                }
+            });
 
         } catch (err: any) {
             setError(err.message);
@@ -114,21 +144,24 @@ export default function MACAddressLookupTool() {
                                             label="MAC Address"
                                             value={result.macAddress}
                                         />
+                                        <InfoItem
+                                            label="Address"
+                                            value={result.address}
+                                        />
+                                        <InfoItem
+                                            label="Country"
+                                            value={result.country}
+                                        />
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                             <InfoItem
-                                                label="Address Type"
+                                                label="Type"
                                                 value={result.type}
                                             />
                                             <InfoItem
-                                                label="Cast Type"
-                                                value={result.cast}
+                                                label="MAC Range"
+                                                value={`${result.range.start} - ${result.range.end}`}
                                             />
                                         </div>
-                                        {result.isPrivate && (
-                                            <div className="mt-2 p-3 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 text-sm rounded">
-                                                <p className="break-words">Note: This is a locally administered address</p>
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
                             </div>

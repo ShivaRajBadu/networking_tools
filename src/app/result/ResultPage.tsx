@@ -54,21 +54,21 @@ const ResultPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-8 px-4">
+        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white py-8 px-2 sm:px-4">
             <div className="container mx-auto">
-                <Card className="max-w-5xl mx-auto overflow-hidden shadow-xl border-sky-200">
+                <Card className="max-w-5xl mx-auto overflow-hidden shadow-xl py-0 border-sky-200">
                     <div className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
                         <h2 className="text-2xl font-bold">Subnet Calculation Results</h2>
                         <p className="opacity-90">IP: {result.type === 'ipv4' ? result.data[0].ipAddress : result.data.ipAddress}</p>
                     </div>
 
                     {result.type === 'ipv4' && result.data && result.data.length > 0 && (
-                        <div className="p-6">
+                        <div className="p-2 sm:p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                 <div className="form-card">
                                     <h3 className="text-lg font-semibold text-sky-800 mb-3">Network Information</h3>
                                     <div className="space-y-2">
-                                        <div className="flex justify-between">
+                                        <div className="flex  justify-between">
                                             <span className="font-medium text-sky-700">IP Address:</span>
                                             <span className="font-mono">{result.data[0].ipAddress}</span>
                                         </div>
@@ -240,17 +240,17 @@ const ResultPage = () => {
                                 <div className="form-card">
                                     <h3 className="text-lg font-semibold text-sky-800 mb-3">Network Information</h3>
                                     <div className="space-y-2">
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col sm:flex-row   justify-between">
                                             <span className="font-medium text-sky-700">IP Address:</span>
-                                            <span className="font-mono">{result.data.ipAddress}</span>
+                                            <span className="font-mono text-xs sm:text-sm overflow-x-auto   ">{result.data.ipAddress}</span>
                                         </div>
-                                        <div className="flex justify-between">
-                                            <span className="font-medium text-sky-700">Network Address:</span>
-                                            <span className="font-mono">{result.data.networkAddress}</span>
+                                        <div className="flex flex-col sm:flex-row justify-between">
+                                            <span className="font-medium text-sky-700   ">Network Address:</span>
+                                            <span className="font-mono text-xs sm:text-sm   ">{result.data.networkAddress}</span>
                                         </div>
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col sm:flex-row justify-between">
                                             <span className="font-medium text-sky-700">Prefix Length:</span>
-                                            <span className="font-mono">{result.data.prefixLength}</span>
+                                            <span className="font-mono text-xs sm:text-sm   ">{result.data.prefixLength}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -258,11 +258,11 @@ const ResultPage = () => {
                                 <div className="form-card">
                                     <h3 className="text-lg font-semibold text-sky-800 mb-3">Host Information</h3>
                                     <div className="space-y-2">
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col sm:flex-row justify-between">
                                             <span className="font-medium text-sky-700">Usable Host Range:</span>
-                                            <span className="font-mono text-xs">{result.data.hostRange}</span>
+                                            <span className="font-mono text-xs overflow-x-auto">{result.data.hostRange}</span>
                                         </div>
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col sm:flex-row justify-between">
                                             <span className="font-medium text-sky-700">Total Hosts:</span>
                                             <span className="font-mono">2^{128 - parseInt(result.data.prefixLength.replace('/', ''))}</span>
                                         </div>
@@ -276,13 +276,13 @@ const ResultPage = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <h4 className="font-medium text-sky-700 mb-2">Expanded Format</h4>
-                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs sm:text-sm overflow-x-auto">
                                             {result.data.ipAddress.replace(/::/g, ':0000:0000:0000:0000:0000:0000:').replace(/^:|:$/g, '').split(':').map((hex: string) => hex.padStart(4, '0')).join(':')}
                                         </div>
                                     </div>
                                     <div>
                                         <h4 className="font-medium text-sky-700 mb-2">Compressed Format</h4>
-                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs sm:text-sm overflow-x-auto">
                                             {result.data.ipAddress}
                                         </div>
                                     </div>
@@ -295,14 +295,14 @@ const ResultPage = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <h4 className="font-medium text-sky-700 mb-2">Linux Configuration</h4>
-                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs sm:text-sm overflow-x-auto">
                                             <div>sudo ip -6 addr add {result.data.ipAddress}{result.data.prefixLength} dev eth0</div>
                                             <div>sudo ip -6 route add default via fe80::1 dev eth0</div>
                                         </div>
                                     </div>
                                     <div>
                                         <h4 className="font-medium text-sky-700 mb-2">Windows Configuration</h4>
-                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                        <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs sm:text-sm overflow-x-auto">
                                             <div>netsh interface ipv6 add address "Ethernet" {result.data.ipAddress}{result.data.prefixLength}</div>
                                             <div>netsh interface ipv6 add route ::/0 "Ethernet" fe80::1</div>
                                         </div>
@@ -310,7 +310,7 @@ const ResultPage = () => {
                                 </div>
                                 <div className="mt-4">
                                     <h4 className="font-medium text-sky-700 mb-2">Cisco Router Configuration</h4>
-                                    <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
+                                    <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-xs sm:text-sm overflow-x-auto">
                                         <div>interface GigabitEthernet0/0</div>
                                         <div> ipv6 address {result.data.ipAddress}{result.data.prefixLength}</div>
                                         <div> ipv6 enable</div>
@@ -328,7 +328,7 @@ const ResultPage = () => {
                                     {parseInt(result.data.prefixLength.replace('/', '')) <= 48 && (
                                         <div>
                                             <h4 className="font-medium text-sky-700 mb-2">Site Allocation Strategy</h4>
-                                            <div className="bg-gray-100 p-3 rounded text-sm">
+                                            <div className="bg-gray-100 p-3 rounded text-xs sm:text-sm overflow-x-auto  ">
                                                 <p>With a {result.data.prefixLength} prefix, you can create:</p>
                                                 <ul className="list-disc pl-6 mt-2">
                                                     <li>{Math.pow(2, 64 - parseInt(result.data.prefixLength.replace('/', '')))} /64 networks (standard subnets)</li>
@@ -340,7 +340,7 @@ const ResultPage = () => {
 
                                     <div>
                                         <h4 className="font-medium text-sky-700 mb-2">Recommended Address Assignments</h4>
-                                        <div className="space-y-1 font-mono text-sm">
+                                        <div className="space-y-1 font-mono text-xs sm:text-sm overflow-x-auto">
                                             <div><span className="text-sky-600">Infrastructure:</span> {result.data.networkAddress.split('::')[0]}::1:0/112</div>
                                             <div><span className="text-sky-600">User Networks:</span> {result.data.networkAddress.split('::')[0]}::2:0/112 to {result.data.networkAddress.split('::')[0]}::fffe:0/112</div>
                                             <div><span className="text-sky-600">Point-to-Point Links:</span> {result.data.networkAddress.split('::')[0]}::ffff:0/112</div>

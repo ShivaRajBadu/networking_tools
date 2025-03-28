@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const Calculator = () => {
     return (
-        <div className="p-4">
+        <div className="">
             <Tabs defaultValue="ipv4" className="w-full">
                 <div className="flex justify-center mb-6">
                     <TabsList className="custom-tabs-list">

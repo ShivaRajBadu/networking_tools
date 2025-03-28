@@ -34,9 +34,9 @@ const Header = () => {
                         <Link href="/ip-converter" className={`px-3 py-2 rounded hover:bg-blue-700 transition ${isActive('/ip-converter')}`}>
                             IP Converter
                         </Link>
-                        <Link href="/ping-tool" className={`px-3 py-2 rounded hover:bg-blue-700 transition ${isActive('/ping-tool')}`}>
+                        {/* <Link href="/ping-tool" className={`px-3 py-2 rounded hover:bg-blue-700 transition ${isActive('/ping-tool')}`}>
                             Ping
-                        </Link>
+                        </Link> */}
                         <Link href="/mac-lookup" className={`px-3 py-2 rounded hover:bg-blue-700 transition ${isActive('/mac-lookup')}`}>
                             MAC Lookup
                         </Link>

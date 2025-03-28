@@ -40,7 +40,7 @@ const IPv6Calculator = () => {
             <CardHeader className="bg-gradient-to-r from-sky-600 to-sky-500 text-white rounded-t-lg">
                 <CardTitle className="text-3xl font-bold text-center py-4">IPv6 Subnet Calculator</CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent className="py-4 px-2 sm:px-6 sm:p-6">
                 {error && (
                     <div className="mb-6 p-4 bg-rose-50 border-l-4 border-rose-500 text-rose-700 rounded">
                         <div className="flex items-center">
@@ -88,7 +88,7 @@ const IPv6Calculator = () => {
                                 className="pl-10 border-sky-200 focus:border-sky-500 focus:ring-sky-500/20"
                             />
                         </div>
-                        <div className="mt-2 text-sm text-sky-700">
+                        <div className="mt-2 text-xs sm:text-sm text-sky-700">
                             Example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334 or 2001:db8:85a3::8a2e:370:7334
                         </div>
                     </div>

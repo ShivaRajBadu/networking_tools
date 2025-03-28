@@ -107,19 +107,19 @@ export default function BinaryCalculatorTool() {
 
     return (
         <div>
-            <Card className="overflow-hidden shadow-md border-sky-200 mb-6">
-                <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
-                    <CardTitle className="text-xl font-bold">Binary Calculator Tool</CardTitle>
-                    <p className="text-sky-100">Convert between decimal, binary, hexadecimal, and octal</p>
+            <Card className="overflow-hidden shadow-md py-0 border-sky-200 mb-6">
+                <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-4 sm:p-6">
+                    <CardTitle className="text-lg sm:text-xl font-bold">Binary Calculator Tool</CardTitle>
+                    <p className="text-sky-100 text-sm sm:text-base">Convert between decimal, binary, hexadecimal, and octal</p>
                 </CardHeader>
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                     {error && (
-                        <div className="mb-4 p-3 bg-red-100 border border-red-300 text-red-700 rounded">
+                        <div className="mb-4 p-3 bg-red-100 border border-red-300 text-red-700 rounded text-sm">
                             {error}
                         </div>
                     )}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-4 sm:gap-6">
                         <div>
                             <label htmlFor="decimal" className="block text-sm font-medium text-gray-700 mb-1">
                                 Decimal:
@@ -133,7 +133,7 @@ export default function BinaryCalculatorTool() {
                                     convertFromDecimal(e.target.value);
                                 }}
                                 placeholder="Enter decimal number"
-                                className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 text-sm sm:text-base border rounded focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
 
@@ -150,7 +150,7 @@ export default function BinaryCalculatorTool() {
                                     convertFromBinary(e.target.value);
                                 }}
                                 placeholder="Enter binary number"
-                                className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 text-sm sm:text-base border rounded focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
 
@@ -167,7 +167,7 @@ export default function BinaryCalculatorTool() {
                                     convertFromHex(e.target.value);
                                 }}
                                 placeholder="Enter hexadecimal number"
-                                className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 text-sm sm:text-base border rounded focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
 
@@ -184,14 +184,14 @@ export default function BinaryCalculatorTool() {
                                     convertFromOctal(e.target.value);
                                 }}
                                 placeholder="Enter octal number"
-                                className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 text-sm sm:text-base border rounded focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-blue-50 rounded border border-blue-100">
-                        <h3 className="text-lg font-medium mb-2 text-sky-700">How to use:</h3>
-                        <p className="text-gray-700">
+                    <div className="mt-6 p-3 sm:p-4 bg-blue-50 rounded border border-blue-100">
+                        <h3 className="text-base sm:text-lg font-medium mb-2 text-sky-700">How to use:</h3>
+                        <p className="text-gray-700 text-sm sm:text-base">
                             Enter a value in any of the fields above, and the calculator will automatically convert it to the other number systems.
                         </p>
                     </div>

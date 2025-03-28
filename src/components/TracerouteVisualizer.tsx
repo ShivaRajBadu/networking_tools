@@ -89,10 +89,12 @@ export default function TracerouteVisualizer() {
                 // Call our backend API
                 setLoadingStage('Resolving hostname...');
 
-                const response = await fetch('http://localhost:3001/api/traceroute', {
+                const response = await fetch('https://networking-tools-server.onrender.com/api/traceroute/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                     },
                     body: JSON.stringify({ hostname: target }),
                 });

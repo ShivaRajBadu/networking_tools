@@ -129,7 +129,7 @@ const IPv4Calculator = () => {
             <CardHeader className="bg-gradient-to-r from-sky-600 to-sky-500 text-white rounded-t-lg">
                 <CardTitle className="text-3xl font-bold text-center py-4">IPv4 Subnet Calculator</CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent className="py-4 px-2 sm:px-6 sm:p-6">
                 {error && (
                     <div className="mb-6 p-4 bg-rose-50 border-l-4 border-rose-500 text-rose-700 rounded">
                         <div className="flex items-center">

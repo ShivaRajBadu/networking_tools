@@ -86,7 +86,7 @@ export default function CIDRCalculatorTool() {
 
     return (
         <div>
-            <Card className="overflow-hidden shadow-md border-sky-200 mb-6">
+            <Card className="overflow-hidden shadow-md border-sky-200 py-0 mb-6">
                 <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
                     <CardTitle className="text-xl font-bold">CIDR Calculator Tool</CardTitle>
                     <p className="text-sky-100">Enter CIDR notation to calculate network details</p>
@@ -96,7 +96,7 @@ export default function CIDRCalculatorTool() {
                         <label htmlFor="cidr" className="block text-sm font-medium text-gray-700 mb-1">
                             Enter CIDR Notation:
                         </label>
-                        <div className="flex">
+                        <div className="flex flex-col sm:flex-row gap-2">
                             <input
                                 type="text"
                                 id="cidr"
@@ -107,7 +107,7 @@ export default function CIDRCalculatorTool() {
                             />
                             <button
                                 onClick={calculateCIDR}
-                                className="bg-sky-600 text-white px-4 py-2 rounded-r hover:bg-sky-700 transition"
+                                className="bg-sky-600 cursor-pointer text-white px-4 py-2 rounded-r hover:bg-sky-700 transition"
                             >
                                 Calculate
                             </button>
@@ -124,24 +124,24 @@ export default function CIDRCalculatorTool() {
                         <p className="opacity-90">IP: {result.ipAddress}{result.cidrNotation}</p>
                     </div>
 
-                    <CardContent className="p-6">
+                    <CardContent className="p-2 sm:p-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                             <div className="form-card">
                                 <h3 className="text-lg font-semibold text-sky-800 mb-3">Network Information</h3>
                                 <div className="space-y-2">
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">IP Address:</span>
                                         <span className="font-mono">{result.ipAddress}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Network Address:</span>
                                         <span className="font-mono">{result.networkAddress}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Broadcast Address:</span>
                                         <span className="font-mono">{result.broadcastAddress}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Usable Host Range:</span>
                                         <span className="font-mono">{result.firstUsableAddress} - {result.lastUsableAddress}</span>
                                     </div>
@@ -151,19 +151,19 @@ export default function CIDRCalculatorTool() {
                             <div className="form-card">
                                 <h3 className="text-lg font-semibold text-sky-800 mb-3">Subnet Details</h3>
                                 <div className="space-y-2">
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Subnet Mask:</span>
                                         <span className="font-mono">{result.subnetMask}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">CIDR Notation:</span>
                                         <span className="font-mono">{result.cidrNotation}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Wildcard Mask:</span>
                                         <span className="font-mono">{result.wildcardMask}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Total Hosts:</span>
                                         <span className="font-mono">{result.totalHosts.toLocaleString()}</span>
                                     </div>
@@ -175,13 +175,13 @@ export default function CIDRCalculatorTool() {
                             <div className="form-card">
                                 <h3 className="text-lg font-semibold text-sky-800 mb-3">Binary Representation</h3>
                                 <div className="space-y-2">
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">IP Binary:</span>
-                                        <span className="font-mono text-xs">{result.binaryIp}</span>
+                                        <span className="font-mono text-xs overflow-x-auto">{result.binaryIp}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between flex-col gap-2 sm:flex-row">
                                         <span className="font-medium text-sky-700">Subnet Binary:</span>
-                                        <span className="font-mono text-xs">{result.binarySubnetMask}</span>
+                                        <span className="font-mono text-xs overflow-x-auto">{result.binarySubnetMask}</span>
                                     </div>
                                 </div>
                             </div>

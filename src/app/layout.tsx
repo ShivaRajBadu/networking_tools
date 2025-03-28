@@ -22,9 +22,13 @@ export default function RootLayout({
         <main className="container mx-auto  py-8">
           {children}
         </main>
-        <footer className="bg-gray-100 py-4 text-center text-gray-600 text-sm">
-          <div className="container mx-auto">
-            Network Tools © {new Date().getFullYear()}
+        <footer className="mt-12 text-center text-gray-600 text-sm p-8 border-t">
+          <div className="max-w-4xl mx-auto">
+            <p className="mb-4">© 2023 IP Subnet Calculator. All rights reserved.</p>
+            <p className="mb-4">
+              This IP subnet calculator is provided for educational purposes. While we strive for accuracy, please verify critical network configurations independently.
+            </p>
+
           </div>
         </footer>
       </body>

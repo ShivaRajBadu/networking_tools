@@ -1,7 +1,6 @@
 import React from 'react';
 import Calculator from './components/Calculator';
 import Link from 'next/link';
-import Head from 'next/head';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      <div className="container mx-auto py-8 px-4">
+      <div className="container mx-auto  px-4">
         <header>
           <h1 className="text-4xl font-bold text-center my-8">IP Subnet Calculator</h1>
           <p className="text-center mb-8 max-w-3xl mx-auto text-gray-700">
@@ -36,7 +35,7 @@ const Page = () => {
             <Calculator />
           </section>
 
-          <section id="what-is-subnetting" aria-labelledby="what-is-subnetting-heading" className="mt-12 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="what-is-subnetting" aria-labelledby="what-is-subnetting-heading" className="mt-12 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="what-is-subnetting-heading" className="text-2xl font-semibold mb-4">What is IP Subnetting?</h2>
             <p className="mb-4">
               IP subnetting is the process of dividing an IP network into multiple smaller network segments, called subnets. This practice improves network security, reduces network congestion, and helps manage IP address allocation more efficiently.
@@ -64,7 +63,7 @@ const Page = () => {
             </div>
           </section>
 
-          <section id="subnet-tables" aria-labelledby="subnet-tables-heading" className="mt-8 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="subnet-tables" aria-labelledby="subnet-tables-heading" className="mt-8 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="subnet-tables-heading" className="text-2xl font-semibold mb-4">IPv4 Subnet Reference Tables</h2>
 
             <h3 className="text-xl font-semibold mt-6 mb-3">Common Subnet Masks</h3>
@@ -145,7 +144,7 @@ const Page = () => {
             </div>
           </section>
 
-          <section id="ip-classes" aria-labelledby="ip-classes-heading" className="mt-8 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="ip-classes" aria-labelledby="ip-classes-heading" className="mt-8 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="ip-classes-heading" className="text-2xl font-semibold mb-4">Understanding IP Classes</h2>
             <p className="mb-4">
               IP address classes were created to provide a structured method of addressing in the early days of the Internet. Although Classless Inter-Domain Routing (CIDR) has largely replaced the class system, understanding IP classes remains important for networking fundamentals.
@@ -212,7 +211,7 @@ const Page = () => {
             </div>
           </section>
 
-          <section id="cidr-notation" aria-labelledby="cidr-notation-heading" className="mt-8 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="cidr-notation" aria-labelledby="cidr-notation-heading" className="mt-8 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="cidr-notation-heading" className="text-2xl font-semibold mb-4">CIDR Notation Explained</h2>
             <p className="mb-4">
               Classless Inter-Domain Routing (CIDR) is a method for allocating IP addresses and for IP routing. CIDR notation is a compact representation of an IP address and its associated routing prefix.
@@ -239,7 +238,7 @@ const Page = () => {
             </p>
           </section>
 
-          <section id="ipv6-subnetting" aria-labelledby="ipv6-subnetting-heading" className="mt-8 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="ipv6-subnetting" aria-labelledby="ipv6-subnetting-heading" className="mt-8 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="ipv6-subnetting-heading" className="text-2xl font-semibold mb-4">IPv6 Subnetting</h2>
             <p className="mb-4">
               IPv6 uses a 128-bit address space, providing approximately 3.4 × 10^38 unique addresses. This vast address space eliminates the need for techniques like NAT (Network Address Translation) that were developed to extend the life of IPv4.
@@ -281,7 +280,7 @@ const Page = () => {
             </div>
           </section>
 
-          <section id="faq" aria-labelledby="faq-heading" className="mt-8 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="faq" aria-labelledby="faq-heading" className="mt-8 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="faq-heading" className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
 
             <div className="space-y-6">
@@ -329,7 +328,7 @@ const Page = () => {
             </div>
           </section>
 
-          <section id="related-tools" aria-labelledby="related-tools-heading" className="mt-8 max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <section id="related-tools" aria-labelledby="related-tools-heading" className="mt-8 max-w-4xl mx-auto bg-white p-2 sm:p-8 rounded-lg shadow-lg">
             <h2 id="related-tools-heading" className="text-2xl font-semibold mb-4">Related Networking Tools</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Link href="/" className="block p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
@@ -365,19 +364,7 @@ const Page = () => {
           </section>
         </main>
 
-        <footer className="mt-12 text-center text-gray-600 text-sm p-8 border-t">
-          <div className="max-w-4xl mx-auto">
-            <p className="mb-4">© 2023 IP Subnet Calculator. All rights reserved.</p>
-            <p className="mb-4">
-              This IP subnet calculator is provided for educational purposes. While we strive for accuracy, please verify critical network configurations independently.
-            </p>
-            <div className="flex justify-center space-x-4 mt-4">
-              <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>
-              <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link>
-              <Link href="/contact" className="text-blue-600 hover:underline">Contact Us</Link>
-            </div>
-          </div>
-        </footer>
+
       </div>
     </>
   );

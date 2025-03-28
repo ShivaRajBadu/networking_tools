@@ -82,28 +82,28 @@ export default function IPConverterTool() {
 
     return (
         <div>
-            <Card className="overflow-hidden shadow-md border-sky-200 mb-6">
-                <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
-                    <CardTitle className="text-xl font-bold">IP Address Converter Tool</CardTitle>
-                    <p className="text-sky-100">Convert IP addresses between different formats</p>
+            <Card className="overflow-hidden shadow-md py-0 border-sky-200 mb-6">
+                <CardHeader className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-4 sm:p-6">
+                    <CardTitle className="text-lg sm:text-xl font-bold">IP Address Converter Tool</CardTitle>
+                    <p className="text-sky-100 text-sm sm:text-base">Convert IP addresses between different formats</p>
                 </CardHeader>
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                     <div className="mb-4">
                         <label htmlFor="ipAddress" className="block text-sm font-medium text-gray-700 mb-1">
                             Enter IP Address:
                         </label>
-                        <div className="flex">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                             <input
                                 type="text"
                                 id="ipAddress"
                                 value={ipAddress}
                                 onChange={(e) => setIpAddress(e.target.value)}
                                 placeholder="e.g., 192.168.1.1"
-                                className="flex-1 p-2 border rounded-l focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 text-sm sm:text-base border rounded sm:rounded-r-none focus:ring-blue-500 focus:border-blue-500"
                             />
                             <button
                                 onClick={convertIP}
-                                className="bg-sky-600 text-white px-4 py-2 rounded-r hover:bg-sky-700 transition"
+                                className="w-full sm:w-auto bg-sky-600 text-white px-4 py-2 text-sm sm:text-base rounded sm:rounded-l-none hover:bg-sky-700 transition"
                             >
                                 Convert
                             </button>
@@ -114,66 +114,66 @@ export default function IPConverterTool() {
             </Card>
 
             {result && (
-                <Card className="overflow-hidden shadow-xl border-sky-200">
-                    <div className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-6">
-                        <h2 className="text-2xl font-bold">IP Conversion Results</h2>
-                        <p className="opacity-90">IP: {result.dotted}</p>
+                <Card className="overflow-hidden shadow-xl border-sky-200  ">
+                    <div className="bg-gradient-to-r from-sky-700 to-sky-500 text-white p-4 sm:p-6">
+                        <h2 className="text-xl sm:text-2xl font-bold">IP Conversion Results</h2>
+                        <p className="opacity-90 text-sm sm:text-base">IP: {result.dotted}</p>
                     </div>
 
-                    <CardContent className="p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <CardContent className="p-2 sm:p-6">
+                        <div className="grid grid-cols-1 gap-6 mb-6">
                             <div className="form-card">
-                                <h3 className="text-lg font-semibold text-sky-800 mb-3">IP Address Formats</h3>
-                                <div className="space-y-2">
-                                    <div className="flex justify-between">
+                                <h3 className="text-base sm:text-lg font-semibold text-sky-800 mb-3">IP Address Formats</h3>
+                                <div className="space-y-3">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                         <span className="font-medium text-sky-700">Dotted Decimal:</span>
-                                        <span className="font-mono">{result.dotted}</span>
+                                        <span className="font-mono text-sm sm:text-base break-all">{result.dotted}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                         <span className="font-medium text-sky-700">Binary:</span>
-                                        <span className="font-mono text-xs">{result.binary}</span>
+                                        <span className="font-mono text-xs sm:text-sm break-all">{result.binary}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                         <span className="font-medium text-sky-700">Hexadecimal:</span>
-                                        <span className="font-mono">{result.hexadecimal}</span>
+                                        <span className="font-mono text-sm sm:text-base break-all">{result.hexadecimal}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                         <span className="font-medium text-sky-700">Decimal (32-bit):</span>
-                                        <span className="font-mono">{result.decimal}</span>
+                                        <span className="font-mono text-sm sm:text-base break-all">{result.decimal}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-card">
-                                <h3 className="text-lg font-semibold text-sky-800 mb-3">IP Classification</h3>
-                                <div className="space-y-2">
-                                    <div className="flex justify-between">
+                                <h3 className="text-base sm:text-lg font-semibold text-sky-800 mb-3">IP Classification</h3>
+                                <div className="space-y-3">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                         <span className="font-medium text-sky-700">IP Class:</span>
-                                        <span className="font-mono">Class {result.ipClass}</span>
+                                        <span className="font-mono text-sm sm:text-base">Class {result.ipClass}</span>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                         <span className="font-medium text-sky-700">Address Type:</span>
-                                        <span className="font-mono">{result.isPrivate ? 'Private' : 'Public'}</span>
+                                        <span className="font-mono text-sm sm:text-base">{result.isPrivate ? 'Private' : 'Public'}</span>
                                     </div>
                                     {result.specialType && (
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                                             <span className="font-medium text-sky-700">Special Type:</span>
-                                            <span className="font-mono">{result.specialType}</span>
+                                            <span className="font-mono text-sm sm:text-base">{result.specialType}</span>
                                         </div>
                                     )}
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-sky-50 p-4 rounded-lg border border-sky-200">
-                            <h3 className="text-lg font-semibold text-sky-800 mb-2">IP Address Information</h3>
-                            <p className="text-sm text-gray-700">
+                        <div className="bg-sky-50 p-3 sm:p-4 rounded-lg border border-sky-200">
+                            <h3 className="text-base sm:text-lg font-semibold text-sky-800 mb-2">IP Address Information</h3>
+                            <p className="text-xs sm:text-sm text-gray-700">
                                 {result.isPrivate
                                     ? 'This is a private IP address intended for use within private networks.'
                                     : 'This is a public IP address used on the global internet.'}
                                 {result.specialType && ` It is a ${result.specialType.toLowerCase()} address.`}
                             </p>
-                            <p className="text-sm text-gray-700 mt-2">
+                            <p className="text-xs sm:text-sm text-gray-700 mt-2">
                                 Class {result.ipClass} addresses {result.ipClass === 'A'
                                     ? 'have the first bit as 0 and use the first octet for the network portion.'
                                     : result.ipClass === 'B'
